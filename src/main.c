@@ -12,17 +12,16 @@
 
 #include "push_swap.h"
 
-int	main(char argc, int *argv[])
+int	main(int argc, char *argv[])
 {
-	t_stuck	*stuck_a;
-	t_stuck *stuck_b;
+	// t_stuck	*stuck_a;
+	// t_stuck *stuck_b;
 
-	stuck_a = NULL;
-	stuck_b = NULL:
+	// stuck_a = NULL;
+	// stuck_b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (ft_printf("Error\n"), 0);
+	if (!validinput(argc, argv))
 		return (0);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	ft_printf("Hello, World!\n");
 	return (0);
 }
