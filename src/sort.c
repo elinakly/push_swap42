@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 18:03:18 by eklymova          #+#    #+#             */
-/*   Updated: 2025/01/09 13:37:06 by eklymova         ###   ########.fr       */
+/*   Created: 2025/01/12 15:55:05 by eklymova          #+#    #+#             */
+/*   Updated: 2025/01/12 16:29:06 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ifsorted(t_stuck *stuck_a)
 {
-	unsigned char	*tmp;
-	size_t			i;
+	t_stuck	*temp;
 
-	tmp = (unsigned char *)s;
-	i = 0;
-	if (n == 0)
-		return (NULL);
-	while (i < n)
+	if ((!stuck_a))
+		return (0);
+	temp = stuck_a;
+	while ((temp)->next)
 	{
-		if (tmp[i] == (unsigned char)c)
-			// return ((unsigned char *)&s[i]);
-		i++;
+		if (temp->node > temp->next->node)
+			return (0);
+		temp = temp->next;
 	}
-	return (NULL);
+	return (1);
 }
-// int	main(void)
-// {
-// 	char s[] = "hello my name is bibo";
-// 	printf("%s", (char *)ft_memchr(s, 'i', 19));
-// }

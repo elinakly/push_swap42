@@ -35,9 +35,8 @@ SRCS =  ft_memset.c		\
 		ft_striteri.c   \
 		ft_strmapi.c	\
 		ft_itoa.c		\
-		ft_split.c
-
-SRCSB = ft_lstnew_bonus.c		\
+		ft_split.c		\
+		ft_lstnew_bonus.c		\
 		ft_lstadd_front_bonus.c	\
 		ft_lstsize_bonus.c		\
 		ft_lstlast_bonus.c		\
@@ -51,7 +50,7 @@ SRCSB = ft_lstnew_bonus.c		\
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)
 
-OBJS_B = $(SRCSB:.c=.o)
+# OBJS_B = $(SRCSB:.c=.o)
 
 $(OBJS_DIR)/%.o: %.c | $(OBJS_DIR)
 	$(CC) $(CFLAGS) -o $@ -c $< 
@@ -68,13 +67,13 @@ $(OBJS_DIR):
 all : $(NAME)
 
 
-bonus : $(OBJS) $(OBJS_B)
-	ar rc $(NAME) $(OBJS) $(OBJS_B)
+# bonus : $(OBJS) $(OBJS_B)
+# 	ar rc $(NAME) $(OBJS) $(OBJS_B)
 
 
 clean : 
 	rm -rf $(OBJS_DIR)
-	rm -f $(OBJS) $(OBJS_B)
+	rm -f $(OBJS)
 
 fclean : clean
 	rm -f $(NAME)
