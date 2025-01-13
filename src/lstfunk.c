@@ -56,3 +56,26 @@ void	ft_lstadd_back1(t_stuck **stuck_a, t_stuck *new)
 		tmp = tmp->next;
 	tmp->next = new;
 }
+
+void	ft_lstadd_front1(t_stuck **stuck_a, t_stuck *new)
+{
+	t_stuck	*current;
+	t_stuck	*prev = NULL;
+
+	if (!stuck_a || !new || !*stuck_a)
+		return;
+
+	current = *stuck_a;
+	while (current && current != new)
+	{
+		prev = current;
+		current = current->next;
+	}
+	if (current == new)
+	{
+		if (prev)
+			prev->next = new->next;
+		new->next = *stuck_a;
+		*stuck_a = new;
+	}
+}

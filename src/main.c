@@ -39,13 +39,18 @@ int	init_stuck(int argc, char **argv, t_stuck **stuck_a)
 		ft_lstadd_back1(stuck_a, new);
 		i++;
 	}
-	t_stuck *tmp = *stuck_a;  // print the list
+
+	return (1);
+}
+
+void print_stuck(t_stuck *stuck_a)
+{
+	t_stuck *tmp = stuck_a;
 	while (tmp)
 	{
 		ft_printf("%d\n", tmp->node);
 		tmp = tmp->next;
 	}
-	return (1);
 }
 
 void sort(t_stuck **stuck_a, t_stuck **stuck_b)
