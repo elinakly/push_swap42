@@ -58,5 +58,28 @@ void	rra(t_stuck **stack_a)
 	ft_printf("rra\n");
 }
 
-void pa ()
-void pb ()
+void	pa(t_stuck **stack_a, t_stuck **stack_b)
+{
+	t_stuck	*tmp;
+
+	if (*stack_a == NULL)
+		return ;
+	tmp = (*stack_a)->next;
+	(*stack_a)->next = *stack_b;
+	*stack_b = *stack_a;
+	*stack_a = tmp;
+	ft_printf("pa\n");
+}
+
+void	pb(t_stuck **stack_b, t_stuck **stack_a)
+{
+	t_stuck	*tmp;
+
+	if (*stack_b == NULL)
+		return ;
+	tmp = (*stack_b)->next;
+	(*stack_b)->next = *stack_a;
+	*stack_a = *stack_b;
+	*stack_b = tmp;
+	ft_printf("pb\n");
+}

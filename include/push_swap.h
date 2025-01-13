@@ -33,4 +33,8 @@ void	sa(t_stuck **stack_a);
 // void	sb(t_stuck **stack_b);
 void	rra(t_stuck **stack_a);
 void	ra(t_stuck **stack_a);
+void	ft_lstadd_front1(t_stuck **stuck_a, t_stuck *new);
+void	pb(t_stuck **stack_b, t_stuck **stack_a);
+void	pa(t_stuck **stack_a, t_stuck **stack_b);
+void    print_stuck(t_stuck *stuck_a);
 #endif
