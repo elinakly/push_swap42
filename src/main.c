@@ -70,6 +70,7 @@ int	main(int argc, char *argv[])
 	if (!validinput(argc, argv))
 		return (0);
 	init_stuck(argc, argv, &stuck_a);
+	
 	if (!ifsorted(stuck_a))
 		ft_printf("non sorted\n");
 	else
