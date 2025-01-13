@@ -12,6 +12,23 @@
 
 #include "push_swap.h"
 
+t_stuck *min(t_stuck **stuck_a)
+{
+	t_stuck *min_node;
+	t_stuck *current;
+
+	current = *stuck_a;
+	min_node = current;
+
+	while (current)
+	{
+		if(current->node < min_node->node)
+			min_node = current;
+		current = current->next;
+	}
+	return (min_node);
+}
+
 void	sort_3(t_stuck **stuck_a)
 {
 	if ((*stuck_a)->node > (*stuck_a)->next->node)
@@ -22,6 +39,14 @@ void	sort_3(t_stuck **stuck_a)
 		ra(stuck_a);
 }
 
+void	sort_4(t_stuck **stuck_a)
+{
+	t_stuck min;
+
+	min = min(stuck_a);
+	
+}
+
 void	simplesort(t_stuck **stuck_a, t_stuck **stuck_b)
 {
 	if (ft_lstsize1(stuck_a) == 2)
@@ -29,8 +54,6 @@ void	simplesort(t_stuck **stuck_a, t_stuck **stuck_b)
 	if (ft_lstsize1(stuck_a) == 3)
 		sort_3(stuck_a);
 	if (ft_lstsize1(stuck_a) == 4)
-	{
 		sort_4(stuck_a, stuck_b);
-	}
 	// if (ft_lstsize1 == 5)
 }

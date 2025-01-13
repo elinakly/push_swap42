@@ -24,25 +24,6 @@ void	sa(t_stuck **stack_a)
 	ft_printf("sa\n");
 }
 
-// void	sb(t_stuck **stack_b)
-// {
-// 	int	tmp;
-
-// 	if (!*stack_b || !(*stack_b)->next)
-// 		return ;
-// 	tmp = (*stack_b)->node;
-// 	(*stack_b)->node = (*stack_b)->next->node;
-// 	(*stack_b)->next->node = tmp;
-// 	ft_printf("sb\n");
-// }
-
-// void	ss(t_list **stack_a, t_list **stack_b)
-// {
-// 	sa(stack_a);
-// 	sb(stack_b);
-// 	ft_printf("ss\n");
-// }
-
 void	ra(t_stuck **stack_a)
 {
 	t_stuck	*tmp;
@@ -76,3 +57,6 @@ void	rra(t_stuck **stack_a)
 	*stack_a = last;
 	ft_printf("rra\n");
 }
+
+void pa ()
+void pb ()
