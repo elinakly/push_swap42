@@ -6,13 +6,13 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:05:23 by eklymova          #+#    #+#             */
-/*   Updated: 2024/10/29 15:31:11 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:43:30 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	word_count(const char *s, char c)
+static size_t	word_count(char *s, char c)
 {
 	size_t	counter;
 	size_t	word;
@@ -44,7 +44,7 @@ static char	**ft_free(char **arr, size_t i)
 	return (NULL);
 }
 
-static size_t	word_length(char const *s, char c)
+static size_t	word_length(char *s, char c)
 {
 	size_t	len;
 
@@ -54,7 +54,7 @@ static size_t	word_length(char const *s, char c)
 	return (len);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**arr;
 	size_t	i;
@@ -73,7 +73,7 @@ char	**ft_split(char const *s, char c)
 		{
 			arr[i] = ft_substr(s, 0, word_length(s, c));
 			if (!arr[i])
-				return (ft_free(arr, i));
+				return (ft_free(arr, 0), NULL);
 			s += word_length(s, c);
 			i++;
 		}
@@ -83,7 +83,7 @@ char	**ft_split(char const *s, char c)
 }
 // int main()
 // {
-//     const char *str = "Hello, this is a test string.";
+//     char *str = "Hello, this is a test string.";
 //     char delimiter = ' ';
 //     // Split the string
 //     char **result = ft_split(str, delimiter);

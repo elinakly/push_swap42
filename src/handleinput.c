@@ -24,14 +24,12 @@ int	validinput(int argc, char **argv)
 	while (args[i])
 	{
 		num = ft_atoi(args[i]);
-		if (!checkdigit(args[i]) || !checkduplicates(num, args, i))
-			return (0);
-		if (num > 2147483647 || num < -2147483648)
+		if ((!checkdigit(args[i]) || !checkduplicates(num, args, i))
+			&& (num > 2147483647 || num < -2147483648))
 			return (ft_printf("frong int\n"), 0);
 		i++;
 	}
-	if (i == 1)
-		return (ft_printf("only one args\n"), 0);
+	free_argv(args);
 	return (1);
 }
 
@@ -40,12 +38,16 @@ int	checkdigit(char *argv)
 	int	i;
 
 	i = 0;
-	if (argv[i] == '-' || argv[i] == '+')
-		i++;
 	while (argv[i])
 	{
+		if ((argv[i] == '-' || argv[i] == '+'))
+		{
+			i++;
+			if (!argv[i])
+				return (printf("invalid inpxxut\n"), 0);
+		}
 		if (!ft_isdigit(argv[i]))
-			return (ft_printf("invalid input\n"), 0);
+			return (printf("invalid inputdigtt\n"), 0);
 		i++;
 	}
 	return (1);
