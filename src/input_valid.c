@@ -3,33 +3,25 @@
 int	checkdigit(char *argv);
 int	checkduplicates(int num, char **argv, int i);
 
-int	validinput(int argc, char **argv)
+int	validinput(int argc, char **args)
 {
 	int		i;
 	long	num;
-	char	**args;
 
-	i = 0;
+	i = 1;
 	if (argc == 2)
-	{
-		args = ft_split(argv[1], ' ');
-		if (!args)
-			return (ft_printf("split problem\n"), 0);
-	}
-	else
-	{
-		args = argv;
-		i = 1;
-	}
+		i = 0;
 	while (args[i])
 	{
 		num = ft_atoi(args[i]);
-		if ((!checkdigit(args[i]) || !checkduplicates(num, args, i))
-			&& (num > 2147483647 || num < -2147483648))
-			return (ft_printf("frong int\n"), 0);
+		if (!checkdigit(args[i]))
+			return (0);
+		if (!checkduplicates(num, args, i))
+			return (0);
+		if (num > 2147483647 || num < -2147483648)
+			return (0);
 		i++;
 	}
-	free_argv(args);
 	return (1);
 }
 
