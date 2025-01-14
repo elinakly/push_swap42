@@ -66,15 +66,16 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-		if (!argv)
-			return (0);
+		if (!args)
+			return (free(argv), 0);
 	}
 	if (!validinput(argc, args))
-		return (0);
+		return (free_argv(argc, args), 0);
 	init_stuck(argc, args, &stuck_a);
 	if (ifsorted(stuck_a))
-		return(0);
+		return (free_argv(argc, args), del_node(&stuck_a), 0);
 	sort(&stuck_a, &stuck_b);
-	//del_node(&stuck_a);
+	free_argv(argc, args);
+	del_node(&stuck_a);
 	return (0);
 }

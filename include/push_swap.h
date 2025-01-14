@@ -37,6 +37,6 @@ void	pa(t_stuck **stack_a, t_stuck **stack_b);
 void    print_stuck(t_stuck *stuck_a);
 int     argv_index(t_stuck *stuck_a);
 t_stuck	*min(t_stuck **stuck_a);
-void	free_argv(char **args);
+void	free_argv(int argc, char **args);
 void	del_node(t_stuck **stuck);
 #endif
