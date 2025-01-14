@@ -61,17 +61,20 @@ t_stuck	*min(t_stuck **stuck_a)
 	return (min_node);
 }
 
-void	free_argv(char **args)
+void	free_argv(int argc, char **args)
 {
 	int	i;
 
 	i = 0;
-	while (args[i])
+	if (argc == 2)
 	{
-		free(args[i]);
-		i++;
+		while (args[i])
+		{
+			free(args[i]);
+			i++;
+		}
+		free(args);
 	}
-	free(args);
 }
 
 void	del_node(t_stuck **stuck)
