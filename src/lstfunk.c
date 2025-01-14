@@ -6,7 +6,7 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:02:26 by eklymova          #+#    #+#             */
-/*   Updated: 2025/01/12 19:02:32 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:55:58 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,4 @@ void	ft_lstadd_back1(t_stuck **stuck_a, t_stuck *new)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new;
-}
-
-void	ft_lstadd_front1(t_stuck **stuck_a, t_stuck *new)
-{
-	t_stuck	*current;
-	t_stuck	*prev = NULL;
-
-	if (!stuck_a || !new || !*stuck_a)
-		return;
-
-	current = *stuck_a;
-	while (current && current != new)
-	{
-		prev = current;
-		current = current->next;
-	}
-	if (current == new)
-	{
-		if (prev)
-			prev->next = new->next;
-		new->next = *stuck_a;
-		*stuck_a = new;
-	}
 }
