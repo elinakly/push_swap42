@@ -13,24 +13,14 @@
 #include "push_swap.h"
 
 
-int	init_stuck(int argc, char **argv, t_stuck **stuck_a)
+int	init_stuck(int argc, char **args, t_stuck **stuck_a)
 {
 	int		i;
-	char	**args;
 	t_stuck	*new;
 
-	i = 0;
+	i = 1;
 	if (argc == 2)
-	{
-		args = ft_split(argv[1], ' ');
-		if (!args)
-			return (0);
-	}
-	else
-	{
-		args = argv;
-		i = 1;
-	}
+		i = 0;
 	while (args[i])
 	{
 		new = ft_lstnew1(ft_atoi(args[i]));
@@ -39,7 +29,6 @@ int	init_stuck(int argc, char **argv, t_stuck **stuck_a)
 		ft_lstadd_back1(stuck_a, new);
 		i++;
 	}
-	free_argv(args);
 	return (1);
 }
 
@@ -67,22 +56,25 @@ int	main(int argc, char *argv[])
 {
 	t_stuck	*stuck_a;
 	t_stuck	*stuck_b;
+	char	**args;
 
+	args = argv;
 	stuck_a = NULL;
 	stuck_b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (0);
-	if (!validinput(argc, argv))
-		return (0);
-	init_stuck(argc, argv, &stuck_a);
-	if (!ifsorted(stuck_a))
-		ft_printf("non sorted\n");
-	else
+	if (argc == 2)
 	{
-		ft_printf("already sorted\n");
-		return (0);
+		args = ft_split(argv[1], ' ');
+		if (!argv)
+			return (0);
 	}
+	if (!validinput(argc, args))
+		return (0);
+	init_stuck(argc, args, &stuck_a);
+	if (ifsorted(stuck_a))
+		return(0);
 	sort(&stuck_a, &stuck_b);
-	del_node(&stuck_a);
+	//del_node(&stuck_a);
 	return (0);
 }
