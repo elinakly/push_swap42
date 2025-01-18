@@ -46,10 +46,10 @@ void	print_stuck(t_stuck *stuck_a)
 
 void	sort(t_stuck **stuck_a, t_stuck **stuck_b)
 {
-	if (ft_lstsize1(stuck_a) <= 5)
+	if (ft_lstsize1(*stuck_a) <= 5)
 		simplesort(stuck_a, stuck_b);
-	// else
-		// radix(stuck_a, stuck_b);
+	else
+		radix(stuck_a, stuck_b);
 }
 
 int	main(int argc, char *argv[])

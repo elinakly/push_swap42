@@ -25,7 +25,7 @@ typedef struct s_stuck
 
 int     validinput(int argc, char **argv);
 int     ifsorted(t_stuck *stuck_a);
-int     ft_lstsize1(t_stuck **stuck_a);
+int     ft_lstsize1(t_stuck *stuck_a);
 t_stuck *ft_lstnew1(int content);
 void    ft_lstadd_back1(t_stuck **stuck_a, t_stuck *new);
 void    simplesort(t_stuck **stuck_a, t_stuck **stuck_b);
@@ -39,4 +39,5 @@ int     argv_index(t_stuck *stuck_a);
 t_stuck	*min(t_stuck **stuck_a);
 void	free_argv(int argc, char **args);
 void	del_node(t_stuck **stuck);
+void	radix(t_stuck **stack_a, t_stuck **stack_b);
 #endif
