@@ -90,12 +90,12 @@ void	sort_5(t_stuck **stuck_a, t_stuck **stuck_b)
 
 void	simplesort(t_stuck **stuck_a, t_stuck **stuck_b)
 {
-	if (ft_lstsize1(stuck_a) == 2)
+	if (ft_lstsize1(*stuck_a) == 2)
 		sa(stuck_a);
-	if (ft_lstsize1(stuck_a) == 3)
+	if (ft_lstsize1(*stuck_a) == 3)
 		sort_3(stuck_a);
-	if (ft_lstsize1(stuck_a) == 4)
+	if (ft_lstsize1(*stuck_a) == 4)
 		sort_4(stuck_a, stuck_b);
-	if (ft_lstsize1(stuck_a) == 5)
+	if (ft_lstsize1(*stuck_a) == 5)
 		sort_5(stuck_a, stuck_b);
 }

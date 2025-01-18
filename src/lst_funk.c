@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-int	ft_lstsize1(t_stuck **stuck_a)
+int	ft_lstsize1(t_stuck *stuck_a)
 {
 	int		i;
 	t_stuck	*tmp;
 
 	i = 0;
-	tmp = *stuck_a;
+	tmp = stuck_a;
 	while (tmp)
 	{
 		i++;
