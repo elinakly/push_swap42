@@ -6,32 +6,42 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:07:06 by eklymova          #+#    #+#             */
-/*   Updated: 2025/01/13 18:02:05 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/01/18 22:06:24 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_3(t_stuck **stuck_a)
+t_stuck	*max(t_stuck **stuck_a)
 {
-	if (stuck_a && *stuck_a && (*stuck_a)->next)
+	t_stuck	*tmp;
+	t_stuck	*max;
+
+	tmp = *stuck_a;
+	max = tmp;
+	while (tmp)
 	{
-		if ((*stuck_a)->node > (*stuck_a)->next->node)
-			sa(stuck_a);
-		if ((*stuck_a)->node > (*stuck_a)->next->next->node)
-			rra(stuck_a);
-		else if ((*stuck_a)->node < (*stuck_a)->next->next->node)
-			ra(stuck_a);
+		if (tmp->node > max->node)
+			max = tmp;
+		tmp = tmp->next;
 	}
-	else
-		ft_printf("list is empty\n");
+	return (max);
 }
 
-void	index3(t_stuck **stuck_a, t_stuck **stuck_b)
+void	sort_3(t_stuck **stuck_a)
 {
-	rra(stuck_a);
-	rra(stuck_a);
-	pb(stuck_a, stuck_b);
+	t_stuck	*maximum;
+
+	maximum = max(stuck_a);
+	if (!ifsorted(*stuck_a))
+	{
+		if (*stuck_a == maximum)
+			ra(stuck_a);
+		if ((*stuck_a)->next == maximum)
+			rra(stuck_a);
+		if ((*stuck_a)->node > (*stuck_a)->next->node)
+			sa(stuck_a);
+	}
 }
 
 void	sort_4(t_stuck **stuck_a, t_stuck **stuck_b)
@@ -40,23 +50,42 @@ void	sort_4(t_stuck **stuck_a, t_stuck **stuck_b)
 
 	minimum = min(stuck_a);
 	argv_index(*stuck_a);
-	printf("Minimum index: %d\n", minimum->index);
 	if (minimum->index == 0)
 		pb(stuck_a, stuck_b);
 	else if (minimum->index == 1)
 	{
-		ra(stuck_a);
+		sa(stuck_a);
 		pb(stuck_a, stuck_b);
 	}
 	else if (minimum->index == 2)
 	{
 		rra(stuck_a);
+		rra(stuck_a);
 		pb(stuck_a, stuck_b);
 	}
 	else if (minimum->index == 3)
-		index3(stuck_a, stuck_b);
+	{
+		rra(stuck_a);
+		pb(stuck_a, stuck_b);
+	}
 	sort_3(stuck_a);
 	pa(stuck_b, stuck_a);
+}
+
+void	index5(t_stuck **stuck_a, t_stuck **stuck_b, int index)
+{
+	if (index == 3)
+	{
+		rra(stuck_a);
+		rra(stuck_a);
+		pb(stuck_a, stuck_b);
+	}
+	else if (index == 2)
+	{
+		ra(stuck_a);
+		sa(stuck_a);
+		pb(stuck_a, stuck_b);
+	}
 }
 
 void	sort_5(t_stuck **stuck_a, t_stuck **stuck_b)
@@ -73,15 +102,12 @@ void	sort_5(t_stuck **stuck_a, t_stuck **stuck_b)
 		pb(stuck_a, stuck_b);
 	}
 	else if (minimum->index == 2)
-	{
-		rra(stuck_a);
-		pb(stuck_a, stuck_b);
-	}
+		index5(stuck_a, stuck_b, 2);
 	else if (minimum->index == 3)
-		index3(stuck_a, stuck_b);
+		index5(stuck_a, stuck_b, 3);
 	else if (minimum->index == 4)
 	{
-		ra(stuck_a);
+		rra(stuck_a);
 		pb(stuck_a, stuck_b);
 	}
 	sort_4(stuck_a, stuck_b);
@@ -90,6 +116,7 @@ void	sort_5(t_stuck **stuck_a, t_stuck **stuck_b)
 
 void	simplesort(t_stuck **stuck_a, t_stuck **stuck_b)
 {
+
 	if (ft_lstsize1(*stuck_a) == 2)
 		sa(stuck_a);
 	if (ft_lstsize1(*stuck_a) == 3)

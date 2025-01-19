@@ -6,11 +6,12 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:20:14 by eklymova          #+#    #+#             */
-/*   Updated: 2025/01/13 15:01:35 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/01/18 21:39:24 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 int	ft_atoi(const char *str)
 {
@@ -36,9 +37,7 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	result *= sign;
+	if (result > INT_MAX || result < INT_MIN)
+		return (0);
 	return (result);
 }
-// int main(void)
-// {
-// 	printf("%d\n", ft_atoi(83744));
-// }

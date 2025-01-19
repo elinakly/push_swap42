@@ -14,11 +14,13 @@ int	validinput(int argc, char **args)
 	while (args[i])
 	{
 		num = ft_atoi(args[i]);
+		if (!num && args[i][0] != '0')
+			return (0);
+		if (ft_strlen(args[i]) > 11)
+			return (0);
 		if (!checkdigit(args[i]))
 			return (0);
 		if (!checkduplicates(num, args, i))
-			return (0);
-		if (num > 2147483647 || num < -2147483648)
 			return (0);
 		i++;
 	}
@@ -30,16 +32,16 @@ int	checkdigit(char *argv)
 	int	i;
 
 	i = 0;
+	if (argv[i] == '-' || argv[i] == '+')
+		i++;
+	if (!argv[i])
+		return (0);
 	while (argv[i])
 	{
 		if ((argv[i] == '-' || argv[i] == '+'))
-		{
-			i++;
-			if (!argv[i])
-				return (printf("invalid inpxxut\n"), 0);
-		}
+			return (0);
 		if (!ft_isdigit(argv[i]))
-			return (printf("invalid inputdigtt\n"), 0);
+			return (0);
 		i++;
 	}
 	return (1);
@@ -51,7 +53,7 @@ int	checkduplicates(int num, char **argv, int i)
 	while (argv[i])
 	{
 		if (num == ft_atoi(argv[i]))
-			return (ft_printf("invalid input\n"), 0);
+			return (0);
 		i++;
 	}
 	return (1);

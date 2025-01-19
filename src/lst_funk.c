@@ -24,7 +24,6 @@ int	ft_lstsize1(t_stuck *stuck_a)
 		i++;
 		tmp = tmp->next;
 	}
-	ft_printf("size of the list is %d\n", i);
 	return (i);
 }
 

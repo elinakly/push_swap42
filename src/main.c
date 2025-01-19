@@ -6,7 +6,7 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 13:55:42 by eklymova          #+#    #+#             */
-/*   Updated: 2025/01/13 22:05:09 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/01/18 21:58:03 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,21 @@ int	main(int argc, char *argv[])
 	args = argv;
 	stuck_a = NULL;
 	stuck_b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (argc == 1)
 		return (0);
+	if (argc == 2 && (!argv[1][0] || !ft_strncmp(argv[1], " ", 2)))
+		return (write(2, "Error\n", 6), 0);
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
 		if (!args)
-			return (free(argv), 0);
+			return (free(argv), write(2, "Error\n", 6), 0);
 	}
 	if (!validinput(argc, args))
-		return (free_argv(argc, args), 0);
+		return (free_argv(argc, args), write(2, "Error\n", 6), 0);
 	init_stuck(argc, args, &stuck_a);
 	if (ifsorted(stuck_a))
 		return (free_argv(argc, args), del_node(&stuck_a), 0);
 	sort(&stuck_a, &stuck_b);
-	free_argv(argc, args);
-	del_node(&stuck_a);
-	return (0);
+	return (free_argv(argc, args), del_node(&stuck_a), 0);
 }
