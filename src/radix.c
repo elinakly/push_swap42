@@ -24,13 +24,14 @@ void	fill_array(int *array, t_stuck *current)
 	}
 }
 
-void	buble_sorted_values(int *sorted_values, int size)
+void	buble_sorted_values(t_stuck *stack, int *sorted_values, int size)
 {
 	int		j;
 	int		k;
 	int		temp_val;
 
 	j = 0;
+	fill_array(sorted_values, stack);
 	while (j < size - 1)
 	{
 		k = j + 1;
@@ -58,8 +59,7 @@ void	assign_index(t_stuck *stack, int size)
 	sorted_values = malloc(size * sizeof(int));
 	if (!sorted_values)
 		return ;
-	fill_array(sorted_values, stack);
-	buble_sorted_values(sorted_values, size);
+	buble_sorted_values(stack, sorted_values, size);
 	current = stack;
 	while (current)
 	{
@@ -113,5 +113,5 @@ void	radix(t_stuck **stack_a, t_stuck **stack_b)
 	while ((size >> max_bits) != 0)
 		max_bits++;
 	radix_sort(max_bits, stack_a, stack_b, size);
-	print_stuck(*stack_a);
+	//print_stuck(*stack_a);
 }
