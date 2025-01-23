@@ -21,7 +21,7 @@ This repository includes both the implementation of the sorting logic and a test
    ```
 2. Navigate to the project directory:
    ```bash
-   cd push_swap
+   cd push_swap42
    ```
 3. Initialize the submodule for the tester:
    ```bash
