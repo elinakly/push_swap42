@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	fill_array(int *array, t_stuck *current)
+static void	fill_array(int *array, t_stuck *current)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ void	fill_array(int *array, t_stuck *current)
 	}
 }
 
-void	buble_sorted_values(t_stuck *stack, int *sorted_values, int size)
+static void	buble_sorted_values(t_stuck *stack, int *sorted_values, int size)
 {
 	int		j;
 	int		k;
@@ -49,7 +49,7 @@ void	buble_sorted_values(t_stuck *stack, int *sorted_values, int size)
 	}
 }
 
-void	assign_index(t_stuck *stack, int size)
+static void	assign_index(t_stuck *stack, int size)
 {
 	t_stuck	*current;
 	int		*sorted_values;
@@ -78,7 +78,7 @@ void	assign_index(t_stuck *stack, int size)
 	free(sorted_values);
 }
 
-void	radix_sort(int max_bits, t_stuck **stack_a,
+static void	radix_sort(int max_bits, t_stuck **stack_a,
 		t_stuck **stack_b, int size)
 {
 	int	bit;
@@ -113,5 +113,4 @@ void	radix(t_stuck **stack_a, t_stuck **stack_b)
 	while ((size >> max_bits) != 0)
 		max_bits++;
 	radix_sort(max_bits, stack_a, stack_b, size);
-	//print_stuck(*stack_a);
 }

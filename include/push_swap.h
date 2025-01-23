@@ -21,23 +21,24 @@ typedef struct s_stuck
 	int				node;
 	int				index;
 	struct s_stuck	*next;
-}t_stuck;
+}	t_stuck;
 
-int     validinput(int argc, char **argv);
-int     ifsorted(t_stuck *stuck_a);
-int     ft_lstsize1(t_stuck *stuck_a);
-t_stuck *ft_lstnew1(int content);
-void    ft_lstadd_back1(t_stuck **stuck_a, t_stuck *new);
-void    simplesort(t_stuck **stuck_a, t_stuck **stuck_b);
-void	sa(t_stuck **stack_a);
-void	rra(t_stuck **stack_a);
-void	ra(t_stuck **stack_a);
-void	pb(t_stuck **stack_b, t_stuck **stack_a);
-void	pa(t_stuck **stack_a, t_stuck **stack_b);
-void    print_stuck(t_stuck *stuck_a);
-int     argv_index(t_stuck *stuck_a);
-t_stuck	*min(t_stuck **stuck_a);
-void	free_argv(int argc, char **args);
-void	del_node(t_stuck **stuck);
-void	radix(t_stuck **stack_a, t_stuck **stack_b);
+t_stuck		*min(t_stuck **stuck_a);
+t_stuck		*ft_lstnew1(int content);
+t_stuck		*max(t_stuck **stuck_a);
+int			ifsorted(t_stuck *stuck_a);
+int			ft_lstsize1(t_stuck *stuck_a);
+int			argv_index(t_stuck *stuck_a);
+int			validinput(int argc, char **argv);
+void		sa(t_stuck **stack_a);
+void		ra(t_stuck **stack_a);
+void		rra(t_stuck **stack_a);
+void		pb(t_stuck **stack_b, t_stuck **stack_a);
+void		pa(t_stuck **stack_a, t_stuck **stack_b);
+void		del_node(t_stuck **stuck);
+void		free_argv(int argc, char **args);
+void		radix(t_stuck **stack_a, t_stuck **stack_b);
+void		ft_lstadd_back1(t_stuck **stuck_a, t_stuck *new);
+void		simplesort(t_stuck **stuck_a, t_stuck **stuck_b);
+
 #endif

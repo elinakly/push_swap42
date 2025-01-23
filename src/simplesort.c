@@ -6,29 +6,13 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:07:06 by eklymova          #+#    #+#             */
-/*   Updated: 2025/01/18 22:06:24 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:29:05 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stuck	*max(t_stuck **stuck_a)
-{
-	t_stuck	*tmp;
-	t_stuck	*max;
-
-	tmp = *stuck_a;
-	max = tmp;
-	while (tmp)
-	{
-		if (tmp->node > max->node)
-			max = tmp;
-		tmp = tmp->next;
-	}
-	return (max);
-}
-
-void	sort_3(t_stuck **stuck_a)
+static void	sort_3(t_stuck **stuck_a)
 {
 	t_stuck	*maximum;
 
@@ -44,7 +28,7 @@ void	sort_3(t_stuck **stuck_a)
 	}
 }
 
-void	sort_4(t_stuck **stuck_a, t_stuck **stuck_b)
+static void	sort_4(t_stuck **stuck_a, t_stuck **stuck_b)
 {
 	t_stuck	*minimum;
 
@@ -72,7 +56,7 @@ void	sort_4(t_stuck **stuck_a, t_stuck **stuck_b)
 	pa(stuck_b, stuck_a);
 }
 
-void	index5(t_stuck **stuck_a, t_stuck **stuck_b, int index)
+static void	index5(t_stuck **stuck_a, t_stuck **stuck_b, int index)
 {
 	if (index == 3)
 	{
@@ -88,7 +72,7 @@ void	index5(t_stuck **stuck_a, t_stuck **stuck_b, int index)
 	}
 }
 
-void	sort_5(t_stuck **stuck_a, t_stuck **stuck_b)
+static void	sort_5(t_stuck **stuck_a, t_stuck **stuck_b)
 {
 	t_stuck	*minimum;
 
@@ -116,7 +100,6 @@ void	sort_5(t_stuck **stuck_a, t_stuck **stuck_b)
 
 void	simplesort(t_stuck **stuck_a, t_stuck **stuck_b)
 {
-
 	if (ft_lstsize1(*stuck_a) == 2)
 		sa(stuck_a);
 	if (ft_lstsize1(*stuck_a) == 3)

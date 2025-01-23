@@ -6,7 +6,7 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:03:18 by eklymova          #+#    #+#             */
-/*   Updated: 2025/01/09 13:37:06 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:28:04 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (tmp[i] == (unsigned char)c)
-			// return ((unsigned char *)&s[i]);
+			return ((unsigned char *)&s[i]);
 		i++;
 	}
 	return (NULL);

@@ -5,9 +5,9 @@ HEADERS	:= -I ./include
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 OBJS_DIR  = objs
-LIBS	:= libft/libft.a printf/libftprintf.a -ldl -lglfw -pthread -lm
+LIBS	:= libft/libft.a printf/libftprintf.a
 
-SRCS = main.c  input_valid.c sort_funk.c lst_funk.c simplesort.c utils.c radix.c
+SRCS = main.c  input_valid.c sort_funk.c simplesort.c utils.c radix.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)
 

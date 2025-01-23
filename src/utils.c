@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 15:55:05 by eklymova          #+#    #+#             */
-/*   Updated: 2025/01/13 22:03:35 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:29:15 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ifsorted(t_stuck *stuck_a)
-{
-	t_stuck	*temp;
-
-	if ((!stuck_a))
-		return (0);
-	temp = stuck_a;
-	while ((temp)->next)
-	{
-		if (temp->node > temp->next->node)
-			return (0);
-		temp = temp->next;
-	}
-	return (1);
-}
 
 int	argv_index(t_stuck *stuck_a)
 {
@@ -51,7 +35,6 @@ t_stuck	*min(t_stuck **stuck_a)
 
 	current = *stuck_a;
 	min_node = current;
-
 	while (current)
 	{
 		if (current->node < min_node->node)
@@ -59,6 +42,22 @@ t_stuck	*min(t_stuck **stuck_a)
 		current = current->next;
 	}
 	return (min_node);
+}
+
+t_stuck	*max(t_stuck **stuck_a)
+{
+	t_stuck	*tmp;
+	t_stuck	*max;
+
+	tmp = *stuck_a;
+	max = tmp;
+	while (tmp)
+	{
+		if (tmp->node > max->node)
+			max = tmp;
+		tmp = tmp->next;
+	}
+	return (max);
 }
 
 void	free_argv(int argc, char **args)

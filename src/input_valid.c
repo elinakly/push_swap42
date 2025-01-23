@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lstfunk.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/12 19:02:26 by eklymova          #+#    #+#             */
+/*   Updated: 2025/01/13 20:55:58 by eklymova         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	checkdigit(char *argv);
-int	checkduplicates(int num, char **argv, int i);
+static int	checkdigit(char *argv);
+static int	checkduplicates(int num, char **argv, int i);
 
 int	validinput(int argc, char **args)
 {
@@ -27,7 +39,7 @@ int	validinput(int argc, char **args)
 	return (1);
 }
 
-int	checkdigit(char *argv)
+static int	checkdigit(char *argv)
 {
 	int	i;
 
@@ -47,7 +59,7 @@ int	checkdigit(char *argv)
 	return (1);
 }
 
-int	checkduplicates(int num, char **argv, int i)
+static int	checkduplicates(int num, char **argv, int i)
 {
 	i++;
 	while (argv[i])

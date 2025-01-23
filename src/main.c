@@ -6,14 +6,13 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 13:55:42 by eklymova          #+#    #+#             */
-/*   Updated: 2025/01/18 21:58:03 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:02:30 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-int	init_stuck(int argc, char **args, t_stuck **stuck_a)
+static int	init_stuck(int argc, char **args, t_stuck **stuck_a)
 {
 	int		i;
 	t_stuck	*new;
@@ -25,31 +24,35 @@ int	init_stuck(int argc, char **args, t_stuck **stuck_a)
 	{
 		new = ft_lstnew1(ft_atoi(args[i]));
 		if (!new)
-			return (ft_printf("problem with the init stuck\n"), 0);
+			return (0);
 		ft_lstadd_back1(stuck_a, new);
 		i++;
 	}
 	return (1);
 }
 
-void	print_stuck(t_stuck *stuck_a)
-{
-	t_stuck	*tmp;
-
-	tmp = stuck_a;
-	while (tmp)
-	{
-		ft_printf("%d\n", tmp->node);
-		tmp = tmp->next;
-	}
-}
-
-void	sort(t_stuck **stuck_a, t_stuck **stuck_b)
+static void	sort(t_stuck **stuck_a, t_stuck **stuck_b)
 {
 	if (ft_lstsize1(*stuck_a) <= 5)
 		simplesort(stuck_a, stuck_b);
 	else
 		radix(stuck_a, stuck_b);
+}
+
+int	ifsorted(t_stuck *stuck_a)
+{
+	t_stuck	*temp;
+
+	if ((!stuck_a))
+		return (0);
+	temp = stuck_a;
+	while ((temp)->next)
+	{
+		if (temp->node > temp->next->node)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
 }
 
 int	main(int argc, char *argv[])
@@ -62,7 +65,7 @@ int	main(int argc, char *argv[])
 	stuck_a = NULL;
 	stuck_b = NULL;
 	if (argc == 1)
-		return (0);
+		return (1);
 	if (argc == 2 && (!argv[1][0] || !ft_strncmp(argv[1], " ", 2)))
 		return (write(2, "Error\n", 6), 0);
 	if (argc == 2)
